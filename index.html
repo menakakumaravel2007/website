@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&family=Noto+Sans+Tamil:wght@400;600&display=swap">
+
+<style>
+  :root {
+    --red-deep: #8c0d24;
+    --gold: #ffd76a;
+    --pink-soft: #ffc7d6;
+    --white: #fff8f8;
+    --shadow: rgba(80, 0, 10, 0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('photo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(60,0,10,0.15) 0%, rgba(40,0,8,0.55) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 640px;
+    margin: 32px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .glass-card {
+    background: rgba(140, 13, 36, 0.35);
+    border: 1px solid rgba(255, 215, 106, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 40px 32px;
+    box-shadow: 0 20px 60px var(--shadow);
+    width: 100%;
+  }
+
+  .title-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: var(--gold);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+    color: var(--pink-soft);
+    margin-bottom: 28px;
+  }
+
+  .btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    color: var(--red-deep);
+    background: linear-gradient(135deg, var(--gold), #ffe9ad);
+    border: none;
+    border-radius: 999px;
+    padding: 14px 38px;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(255, 215, 106, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn:hover { transform: translateY(-2px) scale(1.03); }
+  .btn:active { transform: translateY(0) scale(0.98); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    box-shadow: none;
+    padding: 10px 26px;
+    font-size: 0.85rem;
+  }
+  .btn-ghost:hover { background: rgba(255, 215, 106, 0.12); transform: translateY(-1px); }
+
+  input[type="password"] {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    outline: none;
+    margin-bottom: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  input::placeholder { color: rgba(255, 248, 248, 0.6); }
+
+  .error-msg {
+    color: #ffd1d1;
+    background: rgba(140, 13, 36, 0.6);
+    border: 1px solid rgba(255, 100, 120, 0.6);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    display: none;
+  }
+
+  .shake { animation: shakeForm 0.4s ease; }
+  @keyframes shakeForm {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+  }
+
+  .floating-hearts {
+    position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
+  }
+  .floating-hearts span {
+    position: absolute; bottom: -10%; font-size: 1.4rem;
+    color: rgba(255, 199, 214, 0.55);
+    animation: floatUp linear infinite; user-select: none;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+  }
+
+  footer.page-foot {
+    position: relative; z-index: 1; margin-top: 18px;
+    font-size: 0.75rem; color: rgba(255, 248, 248, 0.55); letter-spacing: 0.5px;
+  }
+
+  /* ---- screen switching ---- */
+  .screen { display: none; }
+  .screen.active { display: flex; flex-direction: column; align-items: center; width: 100%; }
+
+  /* ---- puzzle ---- */
+  .puzzle-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    width: 270px;
+    height: 380px;
+    margin: 0 auto 22px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 14px;
+    padding: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .tile {
+    background-image: url('photo.png');
+    background-size: 270px 380px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .tile:hover { filter: brightness(1.08); }
+  .tile.empty { background-image: none; background-color: transparent; cursor: default; border: 1px dashed rgba(255,255,255,0.2); }
+
+  .puzzle-actions {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .solved-panel { display: none; margin-top: 10px; animation: fadeIn 0.6s ease; }
+  .solved-panel.show { display: block; }
+  .solved-text { font-size: 1.1rem; color: var(--gold); margin-bottom: 16px; }
+
+  .solved-photo-frame {
+    width: 220px;
+    margin: 0 auto 18px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 3px solid var(--gold);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+  }
+  .solved-photo-frame img { width: 100%; display: block; }
+
+  #songAudio { width: 100%; margin-bottom: 18px; border-radius: 999px; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- poem ---- */
+  .poem-card { max-width: 560px; }
+  .lang-toggle { display: flex; justify-content: center; gap: 10px; margin-bottom: 24px; }
+  .toggle-btn {
+    font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600;
+    background: transparent; color: var(--pink-soft);
+    border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+    padding: 8px 20px; cursor: pointer; transition: all 0.2s ease;
+  }
+  .toggle-btn.active { background: var(--gold); color: var(--red-deep); border-color: var(--gold); }
+  .poem-block { display: none; margin-bottom: 30px; line-height: 1.9; }
+  .poem-block.show { display: block; animation: fadeIn 0.5s ease; }
+  .tamil-text { font-family: 'Noto Sans Tamil', 'Poppins', sans-serif; font-size: 1.15rem; color: var(--white); }
+  .english-text { font-family: 'Poppins', sans-serif; font-style: italic; font-weight: 300; font-size: 1.05rem; color: var(--pink-soft); }
+
+  /* ---- final ---- */
+  .final-card { display: flex; flex-direction: column; align-items: center; }
+  .photo-frame {
+    width: 260px; height: 320px; border-radius: 16px; overflow: hidden;
+    border: 4px solid var(--gold); box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    margin-bottom: 26px;
+  }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .miss-you {
+    font-family: 'Great Vibes', cursive; font-size: 3.4rem; color: var(--gold);
+    text-shadow: 0 4px 18px rgba(0,0,0,0.5); animation: pulseHeart 1.8s ease-in-out infinite;
+  }
+  @keyframes pulseHeart { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+
+  @media (max-width: 480px) {
+    .title-script { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <div class="page-wrap">
+
+    <!-- ================= LOGIN SCREEN ================= -->
+    <section id="screen-login" class="screen active">
+      <div class="glass-card">
+        <div class="title-script">Happy Valentine's Day</div>
+        <div class="subtitle">Enter your Secret Code</div>
+
+        <form id="loginForm" autocomplete="off">
+          <input type="password" id="secretCode" placeholder="Secret Code" />
+          <div class="error-msg" id="errorMsg">That's not quite it... try again 💔</div>
+          <button type="submit" class="btn">Unlock ❤</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= PUZZLE SCREEN ================= -->
+    <section id="screen-puzzle" class="screen">
+      <div class="glass-card">
+        <div class="title-script">Solve My Heart</div>
+        <div class="subtitle">Tap a tile next to the empty spot to slide it</div>
+
+        <div id="puzzleBoard" class="puzzle-board"></div>
+
+        <div class="puzzle-actions">
+          <button id="shuffleBtn" class="btn btn-ghost" type="button">Shuffle Again</button>
+          <button id="solveBtn" class="btn btn-ghost" type="button">Solve the Puzzle</button>
+        </div>
+
+        <div id="solvedPanel" class="solved-panel">
+          <p class="solved-text">You solved it! 🎉</p>
+
+          <div class="solved-photo-frame">
+            <img src="photo.png" alt="Our photo">
+          </div>
+
+          <audio id="songAudio" preload="none" controls>
+            <source src="song.aac" type="audio/aac">
+            Your browser does not support this audio format.
+          </audio>
+
+          <button id="toPoemBtn" class="btn">Next Page →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= POEM SCREEN ================= -->
+    <section id="screen-poem" class="screen">
+      <div class="glass-card poem-card">
+        <div class="title-script">For You</div>
+
+        <div class="lang-toggle">
+          <button id="showTamil" class="toggle-btn active" type="button">தமிழ்</button>
+          <button id="showEnglish" class="toggle-btn" type="button">English</button>
+        </div>
+
+        <div id="tamilPoem" class="poem-block tamil-text">
+          <p>enaku kavitha la theriyathu da ana onnu matum soltre ona enaku romba putikum da 
+        <p> evalavu vennu naalu sanda pottu pesama iru ana ena viitu matum poirathu da</p>
+        <p>ne epovum happya irukanum</p>
+        <p> apo apo tension panuve koncham poruthuko enakaka</p>
+        <p> finala ona romba miss pantre da </p>
+        <p>ena vittu matum poiratha da mama</p>
+        <p> I love you da mama and I miss you so much</p>
+        </div>
+
+        
+
+        <button id="toFinalBtn" class="btn">Next Page →</button>
+      </div>
+    </section>
+
+    <!-- ================= FINAL SCREEN ================= -->
+    <section id="screen-final" class="screen">
+      <div class="glass-card final-card">
+        <div class="photo-frame">
+          <img src="photo1.png" alt="Our photo">
+        </div>
+        <p class="miss-you">Miss You Da Mama</p>
+        <p><p class="miss-you">Happy Love Anniversary Da Mama</p></p>
+      </div>
+    </section>
+
+    <footer class="page-foot" id="pageFoot">Made with love, just for you</footer>
+  </div>
+
+<script>
+  /* ============================================
+     FLOATING HEARTS (shared decoration)
+     ============================================ */
+  function initFloatingHearts(count = 18) {
+    const container = document.getElementById('floatingHearts');
+    if (!container) return;
+    container.innerHTML = '';
+    const symbols = ['❤', '💖', '💗', '💕'];
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      span.style.left = Math.random() * 100 + '%';
+      span.style.fontSize = (1 + Math.random() * 1.6) + 'rem';
+      span.style.animationDuration = (8 + Math.random() * 10) + 's';
+      span.style.animationDelay = (Math.random() * 10) + 's';
+      container.appendChild(span);
+    }
+  }
+  initFloatingHearts();
+
+  /* ============================================
+     SCREEN SWITCHING
+     ============================================ */
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  /* ============================================
+     LOGIN LOGIC
+     ============================================ */
+  const SECRET_CODE = "GuruMenaka22";
+  const loginForm = document.getElementById('loginForm');
+  const secretCodeInput = document.getElementById('secretCode');
+  const errorMsg = document.getElementById('errorMsg');
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const entered = secretCodeInput.value.trim();
+
+    if (entered === SECRET_CODE) {
+      showScreen('screen-puzzle');
+      shuffle();
+    } else {
+      errorMsg.style.display = 'block';
+      secretCodeInput.value = '';
+      secretCodeInput.focus();
+      loginForm.classList.add('shake');
+      setTimeout(() => loginForm.classList.remove('shake'), 400);
+    }
+  });
+
+  /* ============================================
+     PUZZLE LOGIC (3x3 sliding puzzle)
+     ============================================ */
+  const SIZE = 3;
+  const BOARD_W = 270;
+  const BOARD_H = 380;
+  const TILE_W = BOARD_W / SIZE;
+  const TILE_H = BOARD_H / SIZE;
+
+  const board = document.getElementById('puzzleBoard');
+  const solvedPanel = document.getElementById('solvedPanel');
+  const shuffleBtn = document.getElementById('shuffleBtn');
+  const solveBtn = document.getElementById('solveBtn');
+  const toPoemBtn = document.getElementById('toPoemBtn');
+  const songAudio = document.getElementById('songAudio');
+
+  let tiles = [];
+
+  function buildSolvedState() {
+    tiles = Array.from({ length: SIZE * SIZE }, (_, i) => i);
+  }
+
+  function renderPuzzle() {
+    board.innerHTML = '';
+    tiles.forEach((value, index) => {
+      const tile = document.createElement('div');
+      tile.classList.add('tile');
+      tile.dataset.index = index;
+
+      if (value === 0) {
+        tile.classList.add('empty');
+      } else {
+        const row = Math.floor(value / SIZE);
+        const col = value % SIZE;
+        tile.style.backgroundPosition = `-${col * TILE_W}px -${row * TILE_H}px`;
+        tile.addEventListener('click', () => attemptMove(index));
+      }
+      board.appendChild(tile);
+    });
+  }
+
+  function attemptMove(index) {
+    const emptyIndex = tiles.indexOf(0);
+    const validMoves = getAdjacentIndices(emptyIndex);
+    if (validMoves.includes(index)) {
+      [tiles[emptyIndex], tiles[index]] = [tiles[index], tiles[emptyIndex]];
+      renderPuzzle();
+      checkSolved();
+    }
+  }
+
+  function getAdjacentIndices(index) {
+    const row = Math.floor(index / SIZE);
+    const col = index % SIZE;
+    const adj = [];
+    if (row > 0) adj.push(index - SIZE);
+    if (row < SIZE - 1) adj.push(index + SIZE);
+    if (col > 0) adj.push(index - 1);
+    if (col < SIZE - 1) adj.push(index + 1);
+    return adj;
+  }
+
+  function shuffle() {
+    buildSolvedState();
+    let emptyIndex = tiles.indexOf(0);
+    for (let i = 0; i < 200; i++) {
+      const options = getAdjacentIndices(emptyIndex);
+      const target = options[Math.floor(Math.random() * options.length)];
+      [tiles[emptyIndex], tiles[target]] = [tiles[target], tiles[emptyIndex]];
+      emptyIndex = target;
+    }
+    solvedPanel.classList.remove('show');
+    renderPuzzle();
+  }
+
+  function checkSolved() {
+    const isSolved = tiles.every((value, index) => value === index);
+    if (isSolved) onPuzzleSolved();
+  }
+
+  function onPuzzleSolved() {
+    solvedPanel.classList.add('show');
+    songAudio.play().catch(() => {
+      document.addEventListener('click', () => songAudio.play(), { once: true });
+    });
+  }
+
+  shuffleBtn.addEventListener('click', shuffle);
+
+  solveBtn.addEventListener('click', () => {
+    buildSolvedState();
+    renderPuzzle();
+    checkSolved();
+  });
+
+  toPoemBtn.addEventListener('click', () => {
+    showScreen('screen-poem');
+    showTamilPoem();
+  });
+
+  /* ============================================
+     POEM LOGIC
+     ============================================ */
+  const tamilBtn = document.getElementById('showTamil');
+  const englishBtn = document.getElementById('showEnglish');
+  const tamilPoem = document.getElementById('tamilPoem');
+  const englishPoem = document.getElementById('englishPoem');
+  const toFinalBtn = document.getElementById('toFinalBtn');
+
+  function showTamilPoem() {
+    tamilPoem.classList.add('show');
+    englishPoem.classList.remove('show');
+    tamilBtn.classList.add('active');
+    englishBtn.classList.remove('active');
+  }
+
+  function showEnglishPoem() {
+    englishPoem.classList.add('show');
+    tamilPoem.classList.remove('show');
+    englishBtn.classList.add('active');
+    tamilBtn.classList.remove('active');
+  }
+
+  tamilBtn.addEventListener('click', showTamilPoem);
+  englishBtn.addEventListener('click', showEnglishPoem);
+
+  toFinalBtn.addEventListener('click', () => {
+    showScreen('screen-final');
+    document.getElementById('pageFoot').textContent = 'Until I see you again';
+  });
+</script>
+</body>
+</html>
