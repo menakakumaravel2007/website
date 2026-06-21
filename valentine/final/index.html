@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miss You</title>
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="final.css">
+</head>
+<body>
+
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <div class="page-wrap">
+    <div class="glass-card final-card">
+
+      <!--
+        ===========================================================
+        PHOTO NOTE:
+        Replace "your-photo.jpg" below with your own picture.
+        Put the image file in this same /final folder
+        (or update the path to wherever it's stored).
+        ===========================================================
+      -->
+      <div class="photo-frame">
+        <img src="photo.jpg" alt="Our photo" id="ourPhoto"
+             onerror="this.onerror=null; this.replaceWith(Object.assign(document.createElement('div'), {className:'photo-placeholder', innerText:'📷 Add your-photo.jpg in this folder'}));">
+      </div>
+
+      <p class="miss-you ">Miss You Da Mama</p> <br>
+      <p class="miss-you">Happy Love Anniversary Da Mama</p>
+    </div>
+    <footer class="page-foot">Until I see you again</footer>
+  </div>
+
+  <script src="../shared.js"></script>
+  <script src="final.js"></script>
+</body>
+</html>

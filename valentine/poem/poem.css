@@ -1,0 +1,61 @@
+/* Page-specific styling for the poem page */
+
+.poem-card {
+  max-width: 560px;
+}
+
+.lang-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.toggle-btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--pink-soft);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn.active {
+  background: var(--gold);
+  color: var(--red-deep);
+  border-color: var(--gold);
+}
+
+.poem-block {
+  display: none;
+  margin-bottom: 30px;
+  line-height: 1.9;
+}
+
+.poem-block.show {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+.tamil-text {
+  font-family: 'Noto Sans Tamil', 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: var(--white);
+}
+
+.english-text {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--pink-soft);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

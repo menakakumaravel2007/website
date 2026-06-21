@@ -1,0 +1,50 @@
+/* Page-specific styling for the final "Miss You" page */
+
+.final-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-frame {
+  width: 260px;
+  height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 4px solid var(--gold);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+  margin-bottom: 26px;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.95rem;
+  color: var(--pink-soft);
+  background: rgba(255,255,255,0.08);
+}
+
+.miss-you {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.4rem;
+  color: var(--gold);
+  text-shadow: 0 4px 18px rgba(0,0,0,0.5);
+  animation: pulseHeart 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseHeart {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}

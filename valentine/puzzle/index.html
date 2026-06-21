@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solve the Puzzle</title>
+<link rel="stylesheet" href="../shared.css">
+<link rel="stylesheet" href="puzzle.css">
+</head>
+<body>
+
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <div class="page-wrap">
+    <div class="glass-card">
+      <div class="title-script">Solve My Heart</div>
+      <div class="subtitle">Tap a tile next to the empty spot to slide it</div>
+
+      <div id="puzzleBoard" class="puzzle-board"></div>
+
+      <div class="puzzle-actions">
+        <button id="shuffleBtn" class="btn btn-ghost" type="button">Shuffle Again</button>
+        <button id="solveBtn" class="btn btn-ghost" type="button">Solve the Puzzle</button>
+      </div>
+
+      <div id="solvedPanel" class="solved-panel">
+        <p class="solved-text">You solved it! 🎉</p>
+
+        <div class="solved-photo-frame">
+          <img src="../assets/puzzle-photo.png" alt="Our photo">
+        </div>
+
+        <!--
+          ===========================================================
+          SONG NOTE:
+          We cannot embed the actual audio from the Instagram link
+          directly (Instagram doesn't allow hot-linking its media,
+          and the track itself may be copyrighted).
+          To use your song:
+            1. Save/export the audio as an MP3 file, e.g. "our-song.mp3"
+            2. Put it in this same /puzzle folder (or update the path)
+            3. Replace the src below
+          ===========================================================
+        -->
+        <audio id="songAudio" preload="none" controls>
+          <source src="song.aac" type="audio/aac">
+          Your browser does not support this audio format.
+        </audio>
+
+        <button id="nextPageBtn" class="btn">Next Page →</button>
+      </div>
+    </div>
+    <footer class="page-foot">One piece at a time, just like us</footer>
+  </div>
+
+  <script src="../shared.js"></script>
+  <script src="puzzle.js"></script>
+</body>
+</html>
