@@ -116,3 +116,6 @@ nextPageBtn.addEventListener('click', () => {
 
 // init
 shuffle();
+function goToFinal() {
+    window.location.href = "../final/index.html";
+}

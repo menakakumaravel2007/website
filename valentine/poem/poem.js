@@ -38,3 +38,6 @@ nextPageBtn.addEventListener('click', () => {
 
 // default view
 showTamil();
+function goToPuzzle() {
+    window.location.href = "../puzzle/index.html";
+}

@@ -25,3 +25,6 @@ form.addEventListener('submit', (e) => {
     setTimeout(() => form.classList.remove('shake'), 400);
   }
 });
+function goToPoem() {
+    window.location.href = "../poem/index.html";
+}
